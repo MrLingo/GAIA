@@ -18,3 +18,7 @@ The abiogenesis part is scraped from trusted and reputable sources like Wikipedi
 
 # Inference results
 GAIA achieved acceptable balance between bias and variance.
+
+# Run
+1. Set the preferred inference parameters in config.json
+2. > python GAIA400m.py
