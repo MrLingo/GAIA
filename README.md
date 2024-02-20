@@ -21,4 +21,4 @@ GAIA achieved acceptable balance between bias and variance.
 
 # Run
 1. Set the preferred inference parameters in config.json
-2. > python GAIA400m.py
+2. `python GAIA400m.py`
