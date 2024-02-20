@@ -1,4 +1,5 @@
 import re
+import json
 import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
@@ -14,7 +15,7 @@ max_length = config['max_length']
 temperature = config['temperature']
 top_k = config['top_k']
 custom_cache_directory = config['cache_dir']
-model_path = config['GAIA400M']
+model_path = config['model_name']
 
 
 # Load model and tokenizer.
