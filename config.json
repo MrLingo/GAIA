@@ -1,7 +1,7 @@
 {
-    "base_model" : "microsoft/phi-2",
-    "cache_dir" : "D:\\MyStuff\\Torch",
-    "dataset_path" : "D:\\MyStuff\\Projects\\GAIA\\data\\combined_dataset.xlsx",
+    "base_model" : "base model name",
+    "cache_dir" : "path\\to\\cached\\dir\\for\\transformers\\models",
+    "dataset_path" : "path\\to\\dataset.xlsx",
     "learning_rate" : 0.0001,
     "num_epochs" : 10,
     "batch_size" : 10,
