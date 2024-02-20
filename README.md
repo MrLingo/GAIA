@@ -3,7 +3,7 @@
 > *Human history is a Gaian dream*
 # Overview
   
-GAIA (Guided Abiogenesis Inquiry Assistant ) is a 400 milion parameter conversational language model, that specializes in the field of abiogenesis.
+GAIA (Guided Abiogenesis Inquiry Assistant ) is a 400 million parameter conversational language model, that specializes in the field of abiogenesis.
 It is created with the purpose of helping with information, related to the origin of life.
 
 # Dataset
