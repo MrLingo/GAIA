@@ -7,7 +7,7 @@ GAIA (Guided Abiogenesis Inquiry Assistant ) is a 400 million parameter conversa
 It is created with the purpose of helping with information, related to the origin of life.
 
 # Dataset
-The model is trained mostly on English, on over 6244 rows of mixed data with multiple science fields. The dataset consists mainly of of abiogenesis, biology, chemistry and physics knowledge. 
+The model is trained mostly on English, on over 6244 rows of mixed data from multiple science fields. The dataset consists mainly of abiogenesis, biology, chemistry and physics knowledge. 
 The abiogenesis part is scraped from trusted and reputable sources like Wikipedia, PubMed and ResearchGate. The biology, chemistry and physics portion is 20% each of larger synthetic datasets, provided by [CAMEL AI](https://huggingface.co/camel-ai).
   
 # Training information
