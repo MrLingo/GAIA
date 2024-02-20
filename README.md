@@ -45,6 +45,11 @@ _GAIA: The chemiosmootic gradiency of a molecule or ion can be represented as:
 \- Phosphorus (Phenyl) = Σ(-OH) + (2-methylbutane)
 Where ΔH is the change in electronegativity of the ion._
 
+# Prerequisites to run
+- python >= 3.x
+- pytorch >= 2.1.2
+- transformers >= 4.36.2
+
 # Run
 1. Set the preferred inference parameters in config.json
 2. `python GAIA400m.py`
