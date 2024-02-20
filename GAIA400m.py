@@ -14,7 +14,7 @@ max_length = config['max_length']
 temperature = config['temperature']
 top_k = config['top_k']
 custom_cache_directory = config['cache_dir']
-model_path = config['"GAIA400M"']
+model_path = config['GAIA400M']
 
 
 # Load model and tokenizer.
