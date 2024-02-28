@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import torch
 from torch.utils.data import Dataset, DataLoader, Subset
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM, AdamW
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM
 
 
 path_to_json = 'config.json'
@@ -30,7 +30,6 @@ start = time.time()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Load your custom dataset from Excel into a DataFrame.
 df = pd.read_excel(dataset_path)
 
 # Tokenize the dataset.
@@ -38,13 +37,12 @@ tokenizer = AutoTokenizer.from_pretrained(base_model, cache_dir=custom_cache_dir
 tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 tokenized_data = tokenizer(df['Prompt'].tolist(), return_tensors='pt', padding=True, truncation=True)
 
-# Add labels to tokenized_data (assuming you have a 'Response' column in your Excel).
+# Add labels to tokenized_data
 tokenized_data['labels'] = tokenizer(df['Response'].tolist(), return_tensors='pt', padding=True, truncation=True)['input_ids']
 
 
 # ----------------------------------- Dataset  ------------------------------------
 
-# Define a custom PyTorch Dataset.
 class GAIADataset(Dataset):
     def __init__(self, tokenized_data):
         self.tokenized_data = tokenized_data
@@ -59,11 +57,11 @@ class GAIADataset(Dataset):
 dataset = GAIADataset(tokenized_data)
 train_indices, val_indices = train_test_split(list(range(len(dataset))), test_size=0.2, random_state=42)
 
-# Create Subset objects for train and validation sets.
+# Split train and val subsets.
 train_dataset = Subset(dataset, train_indices)
 val_dataset = Subset(dataset, val_indices)
 
-# Create DataLoader instances for train and validation sets
+# Create DataLoader instances for the sets.
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
@@ -75,8 +73,6 @@ if use_seq2seq:
 else:
     model = AutoModelForCausalLM.from_pretrained(base_model, cache_dir=custom_cache_directory)
 model.to(device)
-
-#quit()
 
 # Set all parameters to require gradients.  Fine tune every layer of the pre-trained model.
 for param in model.parameters():
