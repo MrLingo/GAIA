@@ -25,7 +25,6 @@ learning_rate = config['learning_rate']
 # Other
 use_seq2seq = config['use_seq2seq']
 
-
 start = time.time()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
