@@ -57,6 +57,7 @@ class GAIADataset(Dataset):
 dataset = GAIADataset(tokenized_data)
 train_indices, val_indices = train_test_split(list(range(len(dataset))), test_size=0.2, random_state=42)
 
+
 # Split train and val subsets.
 train_dataset = Subset(dataset, train_indices)
 val_dataset = Subset(dataset, val_indices)
