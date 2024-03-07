@@ -1,6 +1,7 @@
 import re
 import json
 import torch
+from RAG.retreiver import retrieve
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 
@@ -32,12 +33,24 @@ def post_process_response(query) -> str:
 
 while True:
     user_input = input('Please type something:')
-    input_ids = tokenizer.encode(user_input, return_tensors="pt").to(device)
     
-    context = ''
+    ''' 
+    Perform RAG, by preparing document tensor for concatenation, instead of prompt injection. 
+    The model is too small for that.
+    '''
+
+    try:                      
+        context = retrieve(user_input)
+    except Exception:
+        print('RAG didn\'t worked. Proceed without it.')    
+        context = ''
+                
+    # Encode inputs.
     context_tensor = tokenizer.encode(context, return_tensors='pt').to(device)
-    
+    input_ids = tokenizer.encode(user_input, return_tensors="pt").to(device)    
     input_ids  = torch.cat([input_ids, context_tensor], dim=1)
+    
+    # Generate, decode and return response.
     response_ids = fine_tuned_model.generate(input_ids, max_length=max_length,num_beams=5, pad_token_id=tokenizer.eos_token_id, temperature=temperature, top_k=top_k, do_sample=True)
     response_ids = response_ids.to(device)
     response = tokenizer.decode(response_ids[0], skip_special_tokens=True)
