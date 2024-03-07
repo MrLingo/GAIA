@@ -16,7 +16,7 @@ embedding_function = SentenceTransformerEmbeddings(model_name=EMBEDDINGS_MODEL)
 # Directly query, no need to chunk every time.
 vector_db = Chroma(persist_directory=VECTOR_DB_PATH, embedding_function=embedding_function)        
            
-def retrieve(query: str):    
+def retrieve(query: str) -> str:    
     vectorstore = vector_db.similarity_search_with_score(query)
     
     # Retrieve the one with the highest score.
