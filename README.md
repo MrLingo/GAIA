@@ -10,10 +10,13 @@ It is created with the purpose of helping with information, related to the origi
 The model is trained mostly on English, on over 6244 rows of mixed data with multiple science fields. The dataset consists mainly of of abiogenesis, biology, chemistry and physics knowledge. 
 The abiogenesis part is scraped from trusted and reputable sources like Wikipedia, PubMed and ResearchGate. The biology, chemistry and physics portion is 33% each of larger synthetic datasets, provided by [CAMEL AI](https://huggingface.co/camel-ai).
   
+# Retreival Augmented Generation
+The project uses RAG, by retreiving short chunks (respecting the max prompt length of the base model) from document ("The vital question" by Nick Lane), thus providing additional knowledge on inference, outside of the training data.
+The retreival component returns the chunk with the highest score, encodes it and joins it with the prompt tensor.
+
 # Training information
 - Fine-tuned
 - Trained for 10 epochs
-- Weight decay = 0.001
 - Early stopping implemented
 
 # Inference results
@@ -49,6 +52,9 @@ Where ΔH is the change in electronegativity of the ion._
 - python >= 3.x
 - pytorch >= 2.1.2
 - transformers >= 4.36.2
+- langchain >= 0.1.11
+- chromadb
+- sentence_transformers
 
 # Run
 1. Set the preferred inference parameters in config.json
