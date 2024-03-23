@@ -16,7 +16,7 @@ The retreival component returns the chunk with the highest score, encodes it and
 
 # Training information
 - Fine-tuned
-- Trained for 10 epochs
+- Trained for 50 epochs
 - Early stopping implemented
 
 # Inference results
